@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convertor</title>
+</head>
+
+<body>
+    <script src="papaparse.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="fabric.js"></script>
+    <script src="index.js"></script>
+    <script src="iconCanvas.js"></script>
+    <input type="file" id="csv-file" name="files" value="abc.txt" />
+    <p id="status"></p>
+    <canvas id="canvas" height="512" width="512"></canvas><br/>
+    <canvas id="mdpiCanvas" height="48" width="48"></canvas><br/>
+    <canvas id="hdpiCanvas" height="72" width="72"></canvas><br/>
+    <canvas id="xhdpiCanvas" height="96" width="96"></canvas><br/>
+    <canvas id="xxhdpiCanvas" height="144" width="144"></canvas><br/>
+    <canvas id="xxxhdpiCanvas" height="192" width="192"></canvas>
+    <div id="downloadDiv">
+        <a href="#" id="downloadJsonLink">Download JSON file</a><br/>
+        <a href="#" id="downloadHdpiLink">Download hdpi image</a><br/>
+        <a href="#" id="downloadMdpiLink">Download mdpi image</a><br/>
+        <a href="#" id="downloadXhdpiLink">Download xhdpi image</a><br/>
+        <a href="#" id="downloadXxhdpiLink">Download xxhdpi image</a><br/>
+        <a href="#" id="downloadXxxhdpiLink">Download xxxhdpi image</a>
+    </div>
+</body>
+
+</html>
