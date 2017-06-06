@@ -6,29 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Convertor</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 
 <body>
-    <script src="papaparse.min.js"></script>
-    <script src="jquery-3.2.1.min.js"></script>
-    <script src="fabric.js"></script>
-    <script src="index.js"></script>
-    <script src="iconCanvas.js"></script>
-    <input type="file" id="csv-file" name="files" value="abc.txt" />
-    <p id="status"></p>
-    <canvas id="canvas" height="512" width="512"></canvas><br/>
-    <canvas id="mdpiCanvas" height="48" width="48"></canvas><br/>
-    <canvas id="hdpiCanvas" height="72" width="72"></canvas><br/>
-    <canvas id="xhdpiCanvas" height="96" width="96"></canvas><br/>
-    <canvas id="xxhdpiCanvas" height="144" width="144"></canvas><br/>
-    <canvas id="xxxhdpiCanvas" height="192" width="192"></canvas>
-    <div id="downloadDiv">
-        <a href="#" id="downloadJsonLink">Download JSON file</a><br/>
-        <a href="#" id="downloadHdpiLink">Download hdpi image</a><br/>
-        <a href="#" id="downloadMdpiLink">Download mdpi image</a><br/>
-        <a href="#" id="downloadXhdpiLink">Download xhdpi image</a><br/>
-        <a href="#" id="downloadXxhdpiLink">Download xxhdpi image</a><br/>
-        <a href="#" id="downloadXxxhdpiLink">Download xxxhdpi image</a>
+    <script src="lib/papaparse.min.js"></script>
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="lib/fabric.js"></script>
+    <script src="lib/jszip.min.js"></script>
+    <script src="lib/FileSaver.js"></script>
+    <script src="res/index.js"></script>
+    <script src="res/utils.js"></script>
+    <div class="container">
+        <header>
+            <h1>QuotesApp Generator</h1>
+        </header>
+        <div class="convertorDiv">
+            <label for="csv-file">
+                <h5>Choose .csv formatted File :</h5>
+            </label>
+            <input type="file" id="csv-file" name="files" value="abc.txt" />
+            <p id="status"></p>
+        </div>
+        <div class="canvasDiv">
+            <label>
+                <h5>Generate Icon :</h5>
+            </label>
+            <canvas id="mainCanvas" height="512" width="512"></canvas><br/>
+            <button id="seeAllCanvas">See All</button>
+            <div id="iconCanvas">
+                <br/>
+                <center>
+                    <label for="mdpiCanvas">mdpi</label>
+                    <canvas id="mdpiCanvas" height="48" width="48"></canvas><br/>
+                    <label for="hdpiCanvas">hdpi</label>
+                    <canvas id="hdpiCanvas" height="72" width="72"></canvas><br/>
+                    <label for="xhdpiCanvas">xhdpi</label>
+                    <canvas id="xhdpiCanvas" height="96" width="96"></canvas><br/>
+                    <label for="xxhpiCanvas">xxhdpi</label>
+                    <canvas id="xxhdpiCanvas" height="144" width="144"></canvas><br/>
+                    <label for="xxxhdpiCanvas">xxxhdpi</label>
+                    <canvas id="xxxhdpiCanvas" height="192" width="192"></canvas>
+                </center>
+            </div>
+        </div>
+        <div id="updateBtnDiv">
+            <button id="generateBtn">Update files</button>
+        </div>
+        <div id="downloadDiv">
+            <a href="#" id="downloadJsonLink">Download JSON file</a><br/>
+            <button id = "downloadIcons">Download Icons</button>
+        </div>
     </div>
 </body>
 

@@ -1,4 +1,4 @@
-var data;
+var data, mainCanvas, hdpiCanvas, mdpiCanvas, xhdpiCanvas, xxhdpiCanvas, xxxhdpiCanvas;
 function handleFileSelect(evt) {
     var file = evt.target.files[0];
     if (file != undefined) {
@@ -22,12 +22,15 @@ function handleFileSelect(evt) {
                         console.log(JSON.stringify(outputObj, null, 4));
                         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(outputObj));
                         setUrl($("#downloadJsonLink"), dataStr, "data.json");
-                        createCanvas("Team Quote", $("#downloadMdpiLink"), "mdpiCanvas",10);
-                        createCanvas("Team Quote", $("#downloadHdpiLink"), 'hdpiCanvas',15);
-                        createCanvas("Team Quote", $("#downloadXhdpiLink"), "xhdpiCanvas",20);
-                        createCanvas("Team Quote", $("#downloadXxhdpiLink"), "xxhdpiCanvas",30);
-                        createCanvas("Team Quote", $("#downloadXxxhdpiLink"), "xxxhdpiCanvas",40);
-                        $("#downloadDiv").show();
+                        mainCanvas = createCanvas("Team Quote", $("#downloadImageLink"), "mainCanvas", 100);
+                        hdpiCanvas = createCanvas("Team Quote", $("#downloadMdpiLink"), "mdpiCanvas", 10);
+                        mdpiCanvas = createCanvas("Team Quote", $("#downloadHdpiLink"), 'hdpiCanvas', 15);
+                        xhdpiCanvas = createCanvas("Team Quote", $("#downloadXhdpiLink"), "xhdpiCanvas", 20);
+                        xxhdpiCanvas = createCanvas("Team Quote", $("#downloadXxhdpiLink"), "xxhdpiCanvas", 30);
+                        xxxhdpiCanvas = createCanvas("Team Quote", $("#downloadXxxhdpiLink"), "xxxhdpiCanvas", 40);
+                        $("#updateBtnDiv").show();
+                        console.log("canvas generated.");
+                        updateAllCanvasOnChange();
                     }
                     else {
                         $("#status").html("Please choose file containing id,quote,author and wallpaper data.").css("color", "red");
@@ -40,11 +43,19 @@ function handleFileSelect(evt) {
         }
     }
 }
-function setUrl(element, path, filename) {
-    $(element).attr("href", path);
-    $(element).attr("download", filename);
-}
+$(document).on("click", "#generateBtn", function () {
+    // generateFiles();
+    $("#downloadDiv").show();
+});
+$(document).on("click", "#seeAllCanvas", function () {
+    $("#iconCanvas").toggle();
+});
+$(document).on("click", "#downloadIcons", function () {
+    generateFiles();
+});
 $(document).ready(function () {
     $("#csv-file").change(handleFileSelect);
+    $("#updateBtnDiv").hide();
+    $("#iconCanvas").hide();
     $("#downloadDiv").hide();
 });

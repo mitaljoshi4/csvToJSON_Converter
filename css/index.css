@@ -1,0 +1,18 @@
+header{
+    text-align: center;
+}
+div.container {
+    width: 100%;
+}
+div.convertorDiv{
+    float: left;
+    max-width: 50%;
+    margin: 0;
+    padding: 1em;
+}
+div.canvasDiv {
+    margin-left: 50%;
+    border-left: 1px solid gray;
+    padding: 1em;
+    max-height: 600px;
+}
