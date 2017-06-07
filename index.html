@@ -23,29 +23,36 @@
         </header>
         <div class="convertorDiv">
             <label for="csv-file">
-                <h5>Choose .csv formatted File :</h5>
+                <h3>Choose .csv formatted File :</h3>
             </label>
             <input type="file" id="csv-file" name="files" value="abc.txt" />
             <p id="status"></p>
         </div>
         <div class="canvasDiv">
             <label>
-                <h5>Generate Icon :</h5>
+                <h3>Generate Icon :</h3>
             </label>
+            <textarea row="2" cols="5" id="quoteText" wrap="hard">
+                App Name
+            </textarea><br />
+            <p>Select Text Color:<input type="color" id="quoteColor" /></p>
+            <p>Select Background Color:<input type="color" id="canvasColor" value="#ff8080" /></p>
+            <button id="setBtn">Set</button>
+            <br/>
             <canvas id="mainCanvas" height="512" width="512"></canvas><br/>
             <button id="seeAllCanvas">See All</button>
             <div id="iconCanvas">
                 <br/>
                 <center>
-                    <label for="mdpiCanvas">mdpi</label>
+                    <label for="mdpiCanvas">mdpi</label><br/>
                     <canvas id="mdpiCanvas" height="48" width="48"></canvas><br/>
-                    <label for="hdpiCanvas">hdpi</label>
+                    <label for="hdpiCanvas">hdpi</label><br/>
                     <canvas id="hdpiCanvas" height="72" width="72"></canvas><br/>
-                    <label for="xhdpiCanvas">xhdpi</label>
+                    <label for="xhdpiCanvas">xhdpi</label><br/>
                     <canvas id="xhdpiCanvas" height="96" width="96"></canvas><br/>
-                    <label for="xxhpiCanvas">xxhdpi</label>
+                    <label for="xxhpiCanvas">xxhdpi</label><br/>
                     <canvas id="xxhdpiCanvas" height="144" width="144"></canvas><br/>
-                    <label for="xxxhdpiCanvas">xxxhdpi</label>
+                    <label for="xxxhdpiCanvas">xxxhdpi</label><br/>
                     <canvas id="xxxhdpiCanvas" height="192" width="192"></canvas>
                 </center>
             </div>
@@ -55,7 +62,7 @@
         </div>
         <div id="downloadDiv">
             <a href="#" id="downloadJsonLink">Download JSON file</a><br/>
-            <button id = "downloadIcons">Download Icons</button>
+            <button id="downloadIcons">Download Icons</button>
         </div>
     </div>
 </body>

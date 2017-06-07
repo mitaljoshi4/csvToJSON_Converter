@@ -22,15 +22,8 @@ function handleFileSelect(evt) {
                         console.log(JSON.stringify(outputObj, null, 4));
                         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(outputObj));
                         setUrl($("#downloadJsonLink"), dataStr, "data.json");
-                        mainCanvas = createCanvas("Team Quote", $("#downloadImageLink"), "mainCanvas", 100);
-                        hdpiCanvas = createCanvas("Team Quote", $("#downloadMdpiLink"), "mdpiCanvas", 10);
-                        mdpiCanvas = createCanvas("Team Quote", $("#downloadHdpiLink"), 'hdpiCanvas', 15);
-                        xhdpiCanvas = createCanvas("Team Quote", $("#downloadXhdpiLink"), "xhdpiCanvas", 20);
-                        xxhdpiCanvas = createCanvas("Team Quote", $("#downloadXxhdpiLink"), "xxhdpiCanvas", 30);
-                        xxxhdpiCanvas = createCanvas("Team Quote", $("#downloadXxxhdpiLink"), "xxxhdpiCanvas", 40);
-                        $("#updateBtnDiv").show();
                         console.log("canvas generated.");
-                        updateAllCanvasOnChange();
+                        $("#updateBtnDiv").show();
                     }
                     else {
                         $("#status").html("Please choose file containing id,quote,author and wallpaper data.").css("color", "red");
@@ -45,13 +38,33 @@ function handleFileSelect(evt) {
 }
 $(document).on("click", "#generateBtn", function () {
     // generateFiles();
-    $("#downloadDiv").show();
+    $("#downloadDiv").toggle();
 });
 $(document).on("click", "#seeAllCanvas", function () {
-    $("#iconCanvas").toggle();
+    $("#iconCanvas").show();
 });
 $(document).on("click", "#downloadIcons", function () {
     generateFiles();
+});
+$(document).on("click", "#setBtn", function () {
+    var qText = $.trim($("#quoteText").val());
+    var qColor = $("#quoteColor").val();
+    var bgColor = $("#canvasColor").val();
+    if (mainCanvas) {
+        mainCanvas.dispose();
+        mdpiCanvas.dispose();
+        hdpiCanvas.dispose();
+        xhdpiCanvas.dispose();
+        xxhdpiCanvas.dispose();
+        xxxhdpiCanvas.dispose();
+    }
+    mainCanvas = createCanvas("mainCanvas", 100, qText, qColor, bgColor);
+    mdpiCanvas = createStaticCanvas("mdpiCanvas", bgColor);
+    hdpiCanvas = createStaticCanvas('hdpiCanvas', bgColor);
+    xhdpiCanvas = createStaticCanvas("xhdpiCanvas", bgColor);
+    xxhdpiCanvas = createStaticCanvas("xxhdpiCanvas", bgColor);
+    xxxhdpiCanvas = createStaticCanvas("xxxhdpiCanvas", bgColor);
+    updateAllCanvasOnChange();
 });
 $(document).ready(function () {
     $("#csv-file").change(handleFileSelect);
