@@ -1,0 +1,6 @@
+id,name,description,image,isFav
+1,name1,test,03.jpg,FALSE
+2,name2,Unknown,02.jpg,TRUE
+3,name3,Thomas Carlyle,01.jpg,FALSE
+4,name4,Unknown,04.jpg,TRUE
+5,name5,Thomas Carlyle,01.jpg,FALSE
